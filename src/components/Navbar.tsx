@@ -256,14 +256,14 @@ const Navbar: React.FC = () => {
               {/* mobile menu button */}
               {isNavMenu ? (
                 <button
-                  className="px-2 py-1 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 text-lg"
+                  className="px-2 py-1 rounded-md text-lg dark:bg-gray-100 dark:text-black bg-gray-600 text-gray-50"
                   onClick={() => toggleMobileNav()}
                 >
                   <i className="fa fa-close"></i>
                 </button>
               ) : (
                 <button
-                  className="px-2 py-1 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 text-lg"
+                  className="px-2 py-1 rounded-md text-lg dark:bg-gray-100 dark:text-black bg-gray-600 text-gray-50"
                   onClick={() => toggleMobileNav()}
                 >
                   <i className="fa fa-navicon"></i>
