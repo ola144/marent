@@ -11,10 +11,12 @@ import {
   update,
 } from "firebase/database";
 import { rtdb } from "../firebase/firebase.config";
+import { toast } from "react-toastify";
 
 export const createNotification = async (notificationData: any) => {
   if (!navigator.onLine) {
-    throw Error("No internet connection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   let userData;
@@ -45,7 +47,8 @@ export const createNotification = async (notificationData: any) => {
 
 export const getAllNotificationByUserId = async () => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Connection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   let userData;
@@ -77,7 +80,8 @@ export const getAllNotificationByUserId = async () => {
 
 export const getAllNotification = async () => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Connection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   const notificationRef = ref(rtdb, "notifications");
@@ -96,7 +100,8 @@ export const getAllNotification = async () => {
 
 export const markAsRead = async (id?: string, status?: any) => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Connection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   const notificationRef = ref(rtdb, `notifications/${id}`);

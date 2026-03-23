@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import {
@@ -45,13 +46,13 @@ import MyFeedbacks from "./pages/MyFeedbacks";
 import MyNotifications from "./pages/MyNotifications";
 import AdminNotifications from "./pages/AdminNotifications";
 import { fetchAllBookings, getBooking } from "./core/booked/bookSlice";
-import { setOffline, setOnline } from "./core/appSlice/appSlice";
 import { toast } from "react-toastify";
 import { fetchAllContacts } from "./core/contact/contactSlice";
 import {
   fetchAllNotifications,
   getUserNotifications,
 } from "./core/notification/notificationSlice";
+// import { setOffline, setOnline } from "./core/appSlice/appSlice";
 
 function HomePage() {
   const [filters, setFilters] = useState({
@@ -99,60 +100,43 @@ function App() {
     dispatch(fetchCars())
       .unwrap()
       .then(() => {})
-      .catch((error) => {
-        toast.error(error.message);
-        console.log(error.message);
-      });
+      .catch((_error) => {});
 
     const localData = localStorage.getItem("marentUser");
     if (localData !== null) {
       dispatch(getWishlist())
         .unwrap()
         .then(() => {})
-        .catch((error) => {
-          toast.error(error.message);
-        });
+        .catch((_error) => {});
       dispatch(getBooking())
         .unwrap()
         .then(() => {})
-        .catch((error) => {
-          toast.error(error.message);
-        });
+        .catch((_error) => {});
 
       dispatch(getSingleUser(auth?.userId))
         .unwrap()
         .then(() => {})
-        .catch((error) => {
-          toast.error(error.message);
-        });
+        .catch((_error) => {});
 
       dispatch(fetchAllBookings())
         .unwrap()
         .then(() => {})
-        .catch((error) => {
-          toast.error(error.message);
-        });
+        .catch((_error) => {});
 
       dispatch(fetchAllContacts())
         .unwrap()
         .then(() => {})
-        .catch((error) => {
-          toast.error(error.message);
-        });
+        .catch((_error) => {});
 
       dispatch(fetchAllNotifications())
         .unwrap()
         .then(() => {})
-        .catch((error) => {
-          toast.error(error.message ?? error);
-        });
+        .catch((_error) => {});
 
       dispatch(getUserNotifications())
         .unwrap()
         .then(() => {})
-        .catch((error) => {
-          toast.error(error.message ?? error);
-        });
+        .catch((_error) => {});
     }
   };
 
@@ -161,12 +145,10 @@ function App() {
 
     // handle online and offline
     const handleOffline = () => {
-      dispatch(setOffline());
       toast.error("No internet connection ❌");
     };
 
     const handleOnline = () => {
-      dispatch(setOnline());
       toast.success("Back online ✅");
       handleAPICallMethod();
     };

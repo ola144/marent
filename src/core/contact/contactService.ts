@@ -11,10 +11,12 @@ import {
 } from "firebase/database";
 import { rtdb } from "../firebase/firebase.config";
 import { createNotification } from "../notification/notificationService";
+import { toast } from "react-toastify";
 
 export const createContact = async (contactData: any) => {
   if (!navigator.onLine) {
-    throw Error("No internet connection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   let userData: any;
@@ -52,7 +54,8 @@ export const createContact = async (contactData: any) => {
 
 export const getAllContactByUserId = async () => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Connection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   let userData;
@@ -80,7 +83,8 @@ export const getAllContactByUserId = async () => {
 
 export const getAllContact = async () => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Connection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   const contactRef = ref(rtdb, "contacts");
@@ -101,6 +105,11 @@ export const updateContact = async (
   id: string | undefined,
   updateContact: any,
 ) => {
+  if (!navigator.onLine) {
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
+  }
+
   const contactRef = ref(rtdb, `contacts/${id}`);
 
   await update(contactRef, updateContact);

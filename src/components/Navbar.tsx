@@ -124,7 +124,7 @@ const Navbar: React.FC = () => {
                       if (isNavMenu) toggleMobileNav();
                     }}
                   >
-                    <Button variant="outline">Sign in</Button>
+                    <Button variant="secondary">Sign in</Button>
                   </Link>
                   <Link
                     to="/signup"
@@ -316,7 +316,7 @@ const Navbar: React.FC = () => {
                   className="sm:hidden block"
                   onClick={() => toggleMobileNav()}
                 >
-                  <Button variant="outline">Sign in</Button>
+                  <Button variant="secondary">Sign in</Button>
                 </Link>
                 <Link
                   to="/signup"

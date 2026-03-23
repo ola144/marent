@@ -11,10 +11,12 @@ import {
   set,
 } from "firebase/database";
 import { rtdb } from "../firebase/firebase.config";
+import { toast } from "react-toastify";
 
 export const toggleWishlist = async (carId: string) => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Conntection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   let userData;
@@ -64,7 +66,8 @@ export const toggleWishlist = async (carId: string) => {
 
 export const loadWishlist = async () => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Conntection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   let userData;

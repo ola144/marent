@@ -1,11 +1,13 @@
 import { get, push, ref, remove, set, update } from "firebase/database";
 import { rtdb } from "../firebase/firebase.config";
 import type { ICar } from "./carType";
+import { toast } from "react-toastify";
 // import { apiClient } from "../../utils/apiClient";
 
 export const createCar = async (carData: ICar) => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Conntection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   const carsRef = ref(rtdb, "cars");
@@ -20,7 +22,8 @@ export const createCar = async (carData: ICar) => {
 
 export const getAllCars = async () => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Conntection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
   const snapshot = await get(ref(rtdb, "cars"));
 
@@ -36,7 +39,8 @@ export const getAllCars = async () => {
 
 export const deleteCar = async (id?: string) => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Conntection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   const carRef = ref(rtdb, `cars/${id}`);

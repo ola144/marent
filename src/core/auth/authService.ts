@@ -17,6 +17,7 @@ import {
 } from "firebase/auth";
 import type { LoginUserData } from "./authTypes";
 import { createNotification } from "../notification/notificationService";
+import { toast } from "react-toastify";
 
 export const registerUser = async (
   email: string,
@@ -32,7 +33,8 @@ export const registerUser = async (
   avatar: string,
 ) => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Conntection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   await createUserWithEmailAndPassword(auth, email, password);
@@ -72,7 +74,8 @@ export const loginUser = async (
   password: string,
 ): Promise<LoginUserData> => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Conntection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   const userCredential = await signInWithEmailAndPassword(
@@ -85,7 +88,6 @@ export const loginUser = async (
   const userRef = ref(rtdb, "users");
   const q = query(userRef, orderByChild("email"), equalTo(email));
   const snapshot = await get(q);
-  console.log(snapshot);
 
   if (!snapshot.exists()) {
     alert("User data not found in database");
@@ -115,7 +117,8 @@ export const logoutUser = async () => {
 
 export const getUser = async () => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Conntection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   const snapshot = await get(ref(rtdb, "users"));
@@ -132,7 +135,8 @@ export const getUser = async () => {
 
 export const getUserByUserId = async (userId: string) => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Conntection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   let userData;
@@ -158,7 +162,8 @@ export const updateProfile = async (
   updateData: any,
 ) => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Conntection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   const userRef = ref(rtdb, `users/${userId}`);
