@@ -201,12 +201,9 @@ const BookingDetailsModal: React.FC<BookingDetailsModalProps> = ({
             <p className="text-xs uppercase tracking-[0.25em] text-gray-400">
               Booking Details
             </p>
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-              {booking.id}
-            </h2>
           </div>
           <button
-            className="rounded-full border border-gray-200 dark:border-gray-400 px-3 py-1 text-sm text-black hover:bg-gray-50 dark:hover:bg-gray-600"
+            className="rounded-full border bg-gray-100 dark:bg-gray-600 px-3 py-1 text-sm"
             onClick={onClose}
           >
             Close
@@ -394,31 +391,10 @@ const BookingDetailsModal: React.FC<BookingDetailsModalProps> = ({
               <div className="mt-4 rounded-xl bg-gray-50 dark:bg-gray-500 px-4 py-3 text-sm text-gray-700 dark:text-gray-100 flex items-center justify-between">
                 <span>Total estimate</span>
                 <span className="font-semibold">
-                  {booking.estimatedPrice.toLocaleString() || "--"}
+                  #{booking.estimatedPrice.toLocaleString() || "--"}
                 </span>
               </div>
             </div>
-
-            {/* <div className="rounded-2xl border border-gray-100 dark:border-gray-500 p-5 bg-white dark:bg-gray-600">
-              <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">
-                Actions
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                <button
-                  className="rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-60"
-                  onClick={handleSave}
-                  disabled={saving}
-                >
-                  {saving ? "Saving..." : "Save changes"}
-                </button>
-                <button
-                  className="rounded-full border border-gray-200 dark:border-gray-400 px-5 py-2 text-sm font-semibold  text-black hover:bg-gray-50 dark:hover:bg-gray-600"
-                  onClick={onClose}
-                >
-                  Cancel
-                </button>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>

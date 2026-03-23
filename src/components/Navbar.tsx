@@ -256,14 +256,14 @@ const Navbar: React.FC = () => {
               {/* mobile menu button */}
               {isNavMenu ? (
                 <button
-                  className="px-2 py-1 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 text-lg"
+                  className="px-2 py-1 rounded-md text-lg dark:bg-gray-100 dark:text-black bg-gray-600 text-gray-50"
                   onClick={() => toggleMobileNav()}
                 >
                   <i className="fa fa-close"></i>
                 </button>
               ) : (
                 <button
-                  className="px-2 py-1 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 text-lg"
+                  className="px-2 py-1 rounded-md text-lg dark:bg-gray-100 dark:text-black bg-gray-600 text-gray-50"
                   onClick={() => toggleMobileNav()}
                 >
                   <i className="fa fa-navicon"></i>
@@ -346,7 +346,7 @@ const Navbar: React.FC = () => {
       )}
 
       {isConfirmLogoutPopup && (
-        <div className="fixed bg-black/50 flex items-center justify-center h-screen w-full -top-5 inset-0 z-[1000]">
+        <div className="fixed bg-black/50 flex items-center justify-center h-screen w-full -top-5 inset-0 z-[1000] px-10">
           <div className="bg-white dark:bg-gray-500 text-center flex items-center justify-center w-full max-w-[500px] h-[150px] rounded-md">
             <div className="flex flex-col gap-2">
               <p className="dark:text-white text-gray-500">
