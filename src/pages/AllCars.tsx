@@ -26,7 +26,7 @@ const AllCars: React.FC = () => {
   );
   const types = Array.from(new Set(car.cars.map((car: any) => car.type)));
   const maxPrice = Math.max(...car.cars.map((car: any) => car.price));
-  const pickup = Array.from(new Set(car.cars.map((car: any) => car.pickup)));
+  // const pickup = Array.from(new Set(car.cars.map((car: any) => car.pickup)));
 
   // Filter cars based on search and filters
   const filteredCars = useMemo(() => {
@@ -93,8 +93,8 @@ const AllCars: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 gap-8">
           {/* Filters Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md sticky top-20">
-              <div className="flex justify-between items-center mb-6">
+            <div className="bg-white dark:bg-gray-700 md:p-6 p-2 rounded-lg shadow-md sticky top-20 flex flex-col gap-2">
+              <div className="flex justify-between items-center">
                 <h3 className="text-xl font-bold">Filters</h3>
                 <Button
                   children="Reset"
@@ -104,7 +104,7 @@ const AllCars: React.FC = () => {
               </div>
 
               {/* Search */}
-              <div className="mb-6">
+              <div className="">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-100 mb-2">
                   Search by Name
                 </label>
@@ -117,170 +117,135 @@ const AllCars: React.FC = () => {
                 />
               </div>
 
-              {/* Category Filter */}
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-100 mb-3">
-                  Category
-                </label>
-                <div className="space-y-2">
-                  <label className="flex items-center">
-                    <input
-                      type="radio"
-                      name="category"
-                      value=""
-                      checked={selectedCategory === ""}
-                      onChange={(e) => setSelectedCategory(e.target.value)}
-                      className="w-4 h-4 text-blue-600 cursor-pointer"
-                    />
-                    <span className="ml-2 text-gray-700 dark:text-gray-100">
-                      All Categories
-                    </span>
+              <div className="flex flex-wrap md:flex-col gap-3 justify-between">
+                {/* Category Filter */}
+                <div className="">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-100 mb-3">
+                    Category
                   </label>
-                  {categories.map((category) => (
-                    <label key={category} className="flex items-center">
+                  <div className="space-y-2">
+                    <label className="flex items-center">
                       <input
                         type="radio"
                         name="category"
-                        value={category}
-                        checked={selectedCategory === category}
+                        value=""
+                        checked={selectedCategory === ""}
                         onChange={(e) => setSelectedCategory(e.target.value)}
                         className="w-4 h-4 text-blue-600 cursor-pointer"
                       />
-                      <span className="ml-2 text-gray-700 dark:text-gray-100 capitalize">
-                        {category}
+                      <span className="ml-2 text-gray-700 dark:text-gray-100">
+                        All Categories
                       </span>
                     </label>
-                  ))}
+                    {categories.map((category) => (
+                      <label key={category} className="flex items-center">
+                        <input
+                          type="radio"
+                          name="category"
+                          value={category}
+                          checked={selectedCategory === category}
+                          onChange={(e) => setSelectedCategory(e.target.value)}
+                          className="w-4 h-4 text-blue-600 cursor-pointer"
+                        />
+                        <span className="ml-2 text-gray-700 dark:text-gray-100 capitalize">
+                          {category}
+                        </span>
+                      </label>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* Type Filter */}
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-100 mb-3">
-                  Transmission
-                </label>
-                <div className="space-y-2">
-                  <label className="flex items-center">
-                    <input
-                      type="radio"
-                      name="type"
-                      value=""
-                      checked={selectedType === ""}
-                      onChange={(e) => setSelectedType(e.target.value)}
-                      className="w-4 h-4 text-blue-600 cursor-pointer"
-                    />
-                    <span className="ml-2 text-gray-700 dark:text-gray-100">
-                      All Types
-                    </span>
+                {/* Type Filter */}
+                <div className="">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-100 mb-3">
+                    Transmission
                   </label>
-                  {types.map((type) => (
-                    <label key={type} className="flex items-center">
+                  <div className="space-y-2">
+                    <label className="flex items-center">
                       <input
                         type="radio"
                         name="type"
-                        value={type}
-                        checked={selectedType === type}
+                        value=""
+                        checked={selectedType === ""}
                         onChange={(e) => setSelectedType(e.target.value)}
                         className="w-4 h-4 text-blue-600 cursor-pointer"
                       />
-                      <span className="ml-2 text-gray-700 dark:text-gray-100 capitalize">
-                        {type}
+                      <span className="ml-2 text-gray-700 dark:text-gray-100">
+                        All Types
                       </span>
                     </label>
-                  ))}
+                    {types.map((type) => (
+                      <label key={type} className="flex items-center">
+                        <input
+                          type="radio"
+                          name="type"
+                          value={type}
+                          checked={selectedType === type}
+                          onChange={(e) => setSelectedType(e.target.value)}
+                          className="w-4 h-4 text-blue-600 cursor-pointer"
+                        />
+                        <span className="ml-2 text-gray-700 dark:text-gray-100 capitalize">
+                          {type}
+                        </span>
+                      </label>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* Pickup Filter */}
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-100 mb-3">
-                  Pick Up
-                </label>
-                <div className="space-y-2">
-                  <label className="flex items-center">
-                    <input
-                      type="radio"
-                      name="pickup"
-                      value=""
-                      checked={selectedPickup === ""}
-                      onChange={(e) => setSelectedPickup(e.target.value)}
-                      className="w-4 h-4 text-blue-600 cursor-pointer"
-                    />
-                    <span className="ml-2 text-gray-700 dark:text-gray-100">
-                      All Pickups
-                    </span>
+                {/* People Filter */}
+                <div className="">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-100 mb-3">
+                    Number of People
                   </label>
-                  {pickup.map((pickup) => (
-                    <label key={pickup} className="flex items-center">
-                      <input
-                        type="radio"
-                        name="pickup"
-                        value={pickup}
-                        checked={selectedPickup === pickup}
-                        onChange={(e) => setSelectedPickup(e.target.value)}
-                        className="w-4 h-4 text-blue-600 cursor-pointer"
-                      />
-                      <span className="ml-2 text-gray-700 dark:text-gray-100 capitalize">
-                        {pickup}
-                      </span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* People Filter */}
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-100 mb-3">
-                  Number of People
-                </label>
-                <div className="space-y-2">
-                  <label className="flex items-center">
-                    <input
-                      type="radio"
-                      name="people"
-                      value=""
-                      checked={selectedPeople === ""}
-                      onChange={(e) => setSelectedPeople(e.target.value)}
-                      className="w-4 h-4 text-blue-600 cursor-pointer"
-                    />
-                    <span className="ml-2 text-gray-700 dark:text-gray-100">
-                      Any
-                    </span>
-                  </label>
-                  {[2, 4, 6].map((people) => (
-                    <label key={people} className="flex items-center">
+                  <div className="space-y-2">
+                    <label className="flex items-center">
                       <input
                         type="radio"
                         name="people"
-                        value={people}
-                        checked={selectedPeople === people.toString()}
+                        value=""
+                        checked={selectedPeople === ""}
                         onChange={(e) => setSelectedPeople(e.target.value)}
                         className="w-4 h-4 text-blue-600 cursor-pointer"
                       />
                       <span className="ml-2 text-gray-700 dark:text-gray-100">
-                        {people} People
+                        Any
                       </span>
                     </label>
-                  ))}
+                    {[2, 4, 6].map((people) => (
+                      <label key={people} className="flex items-center">
+                        <input
+                          type="radio"
+                          name="people"
+                          value={people}
+                          checked={selectedPeople === people.toString()}
+                          onChange={(e) => setSelectedPeople(e.target.value)}
+                          className="w-4 h-4 text-blue-600 cursor-pointer"
+                        />
+                        <span className="ml-2 text-gray-700 dark:text-gray-100">
+                          {people} People
+                        </span>
+                      </label>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* Price Range Filter */}
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-100 mb-3">
-                  Max Price: ${priceRange}/day
-                </label>
-                <input
-                  type="range"
-                  min="0"
-                  max={maxPrice}
-                  value={priceRange}
-                  onChange={(e) => setPriceRange(parseInt(e.target.value))}
-                  className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-600"
-                />
-                <div className="flex justify-between text-xs text-gray-500 dark:text-gray-50 mt-2">
-                  <span>#0</span>
-                  <span>#{maxPrice}</span>
+                {/* Price Range Filter */}
+                <div className="">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-100 mb-3">
+                    Max Price: ${priceRange}/day
+                  </label>
+                  <input
+                    type="range"
+                    min="0"
+                    max={maxPrice}
+                    value={priceRange}
+                    onChange={(e) => setPriceRange(parseInt(e.target.value))}
+                    className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                  />
+                  <div className="flex justify-between text-xs text-gray-500 dark:text-gray-50 mt-2">
+                    <span>#0</span>
+                    <span>#{maxPrice}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -349,3 +314,44 @@ const AllCars: React.FC = () => {
 };
 
 export default AllCars;
+
+{
+  /* Pickup Filter */
+}
+{
+  /* <div className="mb-6">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-100 mb-3">
+                  Pick Up
+                </label>
+                <div className="space-y-2">
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      name="pickup"
+                      value=""
+                      checked={selectedPickup === ""}
+                      onChange={(e) => setSelectedPickup(e.target.value)}
+                      className="w-4 h-4 text-blue-600 cursor-pointer"
+                    />
+                    <span className="ml-2 text-gray-700 dark:text-gray-100">
+                      All Pickups
+                    </span>
+                  </label>
+                  {pickup.map((pickup) => (
+                    <label key={pickup} className="flex items-center">
+                      <input
+                        type="radio"
+                        name="pickup"
+                        value={pickup}
+                        checked={selectedPickup === pickup}
+                        onChange={(e) => setSelectedPickup(e.target.value)}
+                        className="w-4 h-4 text-blue-600 cursor-pointer"
+                      />
+                      <span className="ml-2 text-gray-700 dark:text-gray-100 capitalize">
+                        {pickup}
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </div> */
+}
