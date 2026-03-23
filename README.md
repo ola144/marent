@@ -21,7 +21,7 @@ Marent is a car rental web application built with React, TypeScript, and Vite. I
 - React Router
 - Firebase (Auth, Realtime Database)
 - Tailwind CSS
-- React Toastify
+- React Toastify, Swiper
 
 **Environment Variables**
 Create a `.env` file in the project root with the following keys:
