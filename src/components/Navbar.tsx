@@ -346,7 +346,7 @@ const Navbar: React.FC = () => {
       )}
 
       {isConfirmLogoutPopup && (
-        <div className="fixed bg-black/50 flex items-center justify-center h-screen w-full -top-5 inset-0 z-[1000]">
+        <div className="fixed bg-black/50 flex items-center justify-center h-screen w-full -top-5 inset-0 z-[1000] px-10">
           <div className="bg-white dark:bg-gray-500 text-center flex items-center justify-center w-full max-w-[500px] h-[150px] rounded-md">
             <div className="flex flex-col gap-2">
               <p className="dark:text-white text-gray-500">
