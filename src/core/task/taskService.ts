@@ -12,10 +12,12 @@ import {
   update,
 } from "firebase/database";
 import { rtdb } from "../firebase/firebase.config";
+import { toast } from "react-toastify";
 
 export const addTask = async (taskData: any) => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Conntection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   let userData;
@@ -39,7 +41,8 @@ export const addTask = async (taskData: any) => {
 
 export const updateTaskStatus = async (status: boolean, id?: string) => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Conntection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   const taskRef = ref(rtdb, `tasks/${id}`);
@@ -59,7 +62,8 @@ export const deleteTask = async (id: string) => {
 
 export const getAllTasks = async () => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Conntection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   let userData;

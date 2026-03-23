@@ -14,12 +14,14 @@ import { rtdb } from "../firebase/firebase.config";
 import { createNotification } from "../notification/notificationService";
 import { getUserNotifications } from "../notification/notificationSlice";
 import { useAppDispatch } from "../../hooks";
+import { toast } from "react-toastify";
 
 export let bookingCarId: any;
 
 export const bookCar = async (userId: string | undefined, bookData: any) => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Connection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   let userData: any;
@@ -59,7 +61,8 @@ export const bookCar = async (userId: string | undefined, bookData: any) => {
 
 export const updateBooking = async (id: string, bookData: any) => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Conntection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   const bookRef = ref(rtdb, `bookings/${id}`);
@@ -75,7 +78,8 @@ export const deleteBooking = async (id?: string) => {
 
 export const getAllBookingByUserId = async () => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Conntection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   let userData;
@@ -105,7 +109,8 @@ export const getAllBookingByUserId = async () => {
 
 export const getAllBooking = async () => {
   if (!navigator.onLine) {
-    throw new Error("No Internet Conntection");
+    toast.error("No Internet Connection ❌");
+    throw new Error("No Internet Connection ❌");
   }
 
   const bookRef = ref(rtdb, "bookings");
