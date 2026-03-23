@@ -232,7 +232,7 @@ const AllCars: React.FC = () => {
                 {/* Price Range Filter */}
                 <div className="">
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-100 mb-3">
-                    Max Price: ${priceRange}/day
+                    Max Price: #{priceRange}/day
                   </label>
                   <input
                     type="range"
