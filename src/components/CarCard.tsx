@@ -101,7 +101,7 @@ export const CarCard: React.FC<CarCardProps> = ({ car }) => {
 
       <div className="flex gap-3 items-center text-[10px] capitalize">
         <span className="text-gray-400 dark:text-gray-100 capitalize">
-          <i className="fa fa-glass"></i> {car.fuel}L
+          <i className="not-italic">⛽︎</i> {car.fuel}L
         </span>
         <span className="text-gray-400 dark:text-gray-100 capitalize">
           <i className="fa fa-gear"></i> {car.type}

@@ -13,8 +13,8 @@ export const Footer: React.FC = () => {
               Marent
             </h4>
             <p className="text-sm text-gray-600 dark:text-white">
-              Our vision is to provide convenience and help increase your sales
-              business.
+              Our vision is to provide convenience and make sure you enjoy your
+              trips.
             </p>
           </div>
           <div className="col-span-1">
@@ -50,17 +50,29 @@ export const Footer: React.FC = () => {
             <h4 className="font-bold mb-2 text-2xl">Socials</h4>
             <ul className="text-sm text-gray-600 space-y-1">
               <li>
-                <a href="#" className="cursor-pointer dark:text-gray-100">
+                <a
+                  href="https://x.com/"
+                  target="_blank"
+                  className="cursor-pointer dark:text-gray-100"
+                >
                   Twitter
                 </a>
               </li>
               <li>
-                <a href="#" className="cursor-pointer dark:text-gray-100">
+                <a
+                  href="https://www.instagram.com/"
+                  target="_blank"
+                  className="cursor-pointer dark:text-gray-100"
+                >
                   Instagram
                 </a>
               </li>
               <li>
-                <a href="#" className="cursor-pointer dark:text-gray-100">
+                <a
+                  href="https://web.facebook.com/"
+                  target="_blank"
+                  className="cursor-pointer dark:text-gray-100"
+                >
                   Facebook
                 </a>
               </li>
