@@ -277,6 +277,7 @@ const Profile: React.FC = () => {
                         onChange={(event) =>
                           handleProfileChange("zip", event.target.value)
                         }
+                        placeholder="112233"
                       />
                     </div>
                   </div>

@@ -70,7 +70,6 @@ const AdminNotifications: React.FC = () => {
             Monitor booking activity, feedback, and payment updates.
           </p>
         </div>
-        <Button variant="outline">Export log</Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

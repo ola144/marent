@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from "react";
 import Banner2 from "../components/Banner2";
 import { useAppDispatch, useAppSelector } from "../hooks";
@@ -21,6 +22,57 @@ const MyBookings: React.FC = () => {
   const bookings = useAppSelector((state) => state.bookings);
   const [activeBooking, setActiveBooking] = useState<IBooking | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Download as excel
+  const downloadBookingsCSV = () => {
+    const booking = bookings.userBooking;
+
+    if (!booking || booking.length === 0) return;
+
+    // Convert to CSV headers
+    const headers = Object.keys(booking[0]);
+
+    const csvRows = [
+      headers.join(","),
+      ...booking.map((b: any) =>
+        headers.map((field) => `"${b[field] ?? ""}"`).join(","),
+      ),
+    ];
+
+    const csvString = csvRows.join("\n");
+
+    // create file
+    const blob = new Blob([csvString], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+
+    // Download
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "bookings.csv";
+    link.click();
+
+    URL.revokeObjectURL(url);
+  };
+
+  // const downloadBookingsJSON = () => {
+  //   const booking = bookings.userBooking;
+
+  //   if (!booking || booking.length === 0) return;
+
+  //   const blob = new Blob([JSON.stringify(booking, null, 2)], {
+  //     type: "application/json",
+  //   });
+
+  //   const url = URL.createObjectURL(blob);
+
+  //   // Download
+  //   const link = document.createElement("a");
+  //   link.href = url;
+  //   link.download = "bookings.json";
+  //   link.click();
+
+  //   URL.revokeObjectURL(url);
+  // };
 
   useEffect(() => {
     dispatch(getBooking())
@@ -50,8 +102,11 @@ const MyBookings: React.FC = () => {
                     {bookings.userBooking.length} trips scheduled or completed.
                   </p>
                 </div>
-                <button className="rounded-full border border-blue-600 px-5 py-2 text-sm font-semibold text-blue-600 hover:bg-blue-50">
-                  Download history
+                <button
+                  className="rounded-full border border-blue-600 px-5 py-2 text-sm font-semibold text-blue-600 hover:bg-blue-50"
+                  onClick={downloadBookingsCSV}
+                >
+                  Download History
                 </button>
               </div>
 
