@@ -48,7 +48,7 @@ a:hover {
 
 body {
   margin: 0;
-  @apply w-full mx-auto;
+  @apply w-full mx-auto transition-all duration-300;
   /* bg-[#F6F7F9]; */
 }
 

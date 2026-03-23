@@ -117,10 +117,22 @@ const Navbar: React.FC = () => {
             <div className="flex items-center space-x-2 relative">
               {!auth?.userId ? (
                 <>
-                  <Link to="/login" className="hidden sm:inline-block">
+                  <Link
+                    to="/login"
+                    className="hidden sm:inline-block"
+                    onClick={() => {
+                      if (isNavMenu) toggleMobileNav();
+                    }}
+                  >
                     <Button variant="outline">Sign in</Button>
                   </Link>
-                  <Link to="/signup" className="hidden sm:inline-block">
+                  <Link
+                    to="/signup"
+                    className="hidden sm:inline-block"
+                    onClick={() => {
+                      if (isNavMenu) toggleMobileNav();
+                    }}
+                  >
                     <Button variant="primary">Sign up</Button>
                   </Link>
                 </>
@@ -297,8 +309,27 @@ const Navbar: React.FC = () => {
                 Dashboard
               </Link>
             )}
+            {!auth?.userId && (
+              <>
+                <Link
+                  to="/login"
+                  className="sm:hidden block"
+                  onClick={() => toggleMobileNav()}
+                >
+                  <Button variant="outline">Sign in</Button>
+                </Link>
+                <Link
+                  to="/signup"
+                  className="sm:hidden block"
+                  onClick={() => toggleMobileNav()}
+                >
+                  <Button variant="primary">Sign up</Button>
+                </Link>
+              </>
+            )}
           </div>
         </div>
+
         {isNavMenu && (
           <div
             className="bg-black/50 h-screen w-full fixed inset-0 top-14 md:hidden"
