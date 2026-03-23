@@ -180,7 +180,7 @@ const AdminFeedbacks: React.FC = () => {
       </div>
 
       {isContactFormOpen && (
-        <div className="fixed inset-0 -top-5 z-[1000] h-screen w-full flex items-center justify-center bg-black/50">
+        <div className="fixed inset-0 -top-5 z-[1000] h-screen w-full flex items-center justify-center bg-black/50 px-10">
           <div className="bg-white dark:bg-gray-600 h-[500px] overflow-y-auto p-3 w-full max-w-[500px]">
             {/* Contact Form */}
             <div>
